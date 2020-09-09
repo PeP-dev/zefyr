@@ -133,7 +133,7 @@ class _ZefyrLineState extends State<ZefyrLine> {
     final attrs = segment.style;
     TapGestureRecognizer tap;
     if (attrs.contains(NotusAttribute.link)) {
-      tap..onTap = () => print('Tapped link');
+      tap = TapGestureRecognizer()..onTap = () => print('Tapped link');
     } else {
       tap = null;
     }
