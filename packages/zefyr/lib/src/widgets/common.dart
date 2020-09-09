@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:notus/notus.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'editable_box.dart';
 import 'horizontal_rule.dart';
@@ -133,7 +134,13 @@ class _ZefyrLineState extends State<ZefyrLine> {
     final attrs = segment.style;
     TapGestureRecognizer tap;
     if (attrs.contains(NotusAttribute.link)) {
-      tap = TapGestureRecognizer()..onTap = () => print('Tapped link');
+      tap = TapGestureRecognizer()
+        ..onTap = () async {
+          var link = attrs.get(NotusAttribute.link).value;
+          if (await canLaunch(link)) {
+            await launch(link);
+          }
+        };
     } else {
       tap = null;
     }
