@@ -2,6 +2,7 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
@@ -130,11 +131,16 @@ class _ZefyrLineState extends State<ZefyrLine> {
   TextSpan _segmentToTextSpan(Node node, ZefyrThemeData theme) {
     final TextNode segment = node;
     final attrs = segment.style;
-
+    TapGestureRecognizer tap;
+    if (attrs.contains(NotusAttribute.link)) {
+      tap..onTap = () => print('Tapped link');
+    } else {
+      tap = null;
+    }
     return TextSpan(
-      text: segment.value,
-      style: _getTextStyle(attrs, theme),
-    );
+        text: segment.value,
+        style: _getTextStyle(attrs, theme),
+        recognizer: tap);
   }
 
   TextStyle _getTextStyle(NotusStyle style, ZefyrThemeData theme) {

@@ -19,8 +19,10 @@ import 'theme.dart';
 class ZefyrView extends StatefulWidget {
   final NotusDocument document;
   final ZefyrImageDelegate imageDelegate;
+  final Function onLaunchUrl;
 
-  const ZefyrView({Key key, @required this.document, this.imageDelegate})
+  const ZefyrView(
+      {Key key, @required this.document, this.imageDelegate, this.onLaunchUrl})
       : super(key: key);
 
   @override
