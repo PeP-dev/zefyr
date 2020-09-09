@@ -349,7 +349,7 @@ class AttributeTheme {
       italic: TextStyle(fontStyle: FontStyle.italic),
       link: TextStyle(
         decoration: TextDecoration.underline,
-        color: theme.accentColor,
+        color: Colors.blue[700],
       ),
       heading1: LineTheme(
         textStyle: defaultLineTheme.textStyle.copyWith(
