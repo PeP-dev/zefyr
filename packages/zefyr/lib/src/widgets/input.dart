@@ -46,13 +46,10 @@ class InputConnectionController implements TextInputClient {
           keyboardAppearance: keyboardAppearance,
           textCapitalization: TextCapitalization.sentences,
         ),
-      )
-        ..show()
-        ..setEditingState(value);
+      )..setEditingState(value);
       _sentRemoteValues.add(value);
-    } else {
-      _textInputConnection.show();
     }
+    _textInputConnection.show();
   }
 
   /// Closes input connection if it's currently open. Otherwise does nothing.
@@ -84,7 +81,7 @@ class InputConnectionController implements TextInputClient {
 
     if (actualValue == _lastKnownRemoteTextEditingValue) return;
 
-    final shouldRemember = value.text != _lastKnownRemoteTextEditingValue.text;
+    bool shouldRemember = value.text != _lastKnownRemoteTextEditingValue.text;
     _lastKnownRemoteTextEditingValue = actualValue;
     _textInputConnection.setEditingState(actualValue);
     if (shouldRemember) {
@@ -187,18 +184,4 @@ class InputConnectionController implements TextInputClient {
   final List<TextEditingValue> _sentRemoteValues = [];
   TextInputConnection _textInputConnection;
   TextEditingValue _lastKnownRemoteTextEditingValue;
-
-  // TODO: figure out if we need to support autofill
-  @override
-  AutofillScope get currentAutofillScope => null;
-
-  @override
-  void showAutocorrectionPromptRect(int start, int end) {
-    // TODO: implement showAutocorrectionPromptRect
-  }
-
-  @override
-  void performPrivateCommand(String action, Map<String, dynamic> data) {
-    // TODO: implement performPrivateCommand
-  }
 }

@@ -42,7 +42,8 @@ class ZefyrTheme extends InheritedWidget {
   /// and [nullOk] is set to `true`. If [nullOk] is set to `false` (default)
   /// then this method asserts.
   static ZefyrThemeData of(BuildContext context, {bool nullOk = false}) {
-    final widget = context.dependOnInheritedWidgetOfExactType<ZefyrTheme>();
+    final ZefyrTheme widget =
+        context.dependOnInheritedWidgetOfExactType<ZefyrTheme>();
     if (widget == null && nullOk) return null;
     assert(widget != null,
         '$ZefyrTheme.of() called with a context that does not contain a ZefyrEditor.');
@@ -66,7 +67,7 @@ class ZefyrThemeData {
   final ZefyrToolbarTheme toolbarTheme;
 
   factory ZefyrThemeData.fallback(BuildContext context) {
-    final themeData = Theme.of(context);
+    final ThemeData themeData = Theme.of(context);
     final defaultStyle = DefaultTextStyle.of(context);
     final paragraphStyle = defaultStyle.style.copyWith(
       fontSize: 16.0,
@@ -229,12 +230,12 @@ class BlockTheme {
     String fontFamily;
     switch (themeData.platform) {
       case TargetPlatform.iOS:
-      case TargetPlatform.macOS:
         fontFamily = 'Menlo';
         break;
       case TargetPlatform.android:
       case TargetPlatform.fuchsia:
       case TargetPlatform.windows:
+      case TargetPlatform.macOS:
       case TargetPlatform.linux:
         fontFamily = 'Roboto Mono';
         break;

@@ -14,9 +14,9 @@ export 'src/fast_diff.dart';
 int getPositionDelta(Delta user, Delta actual) {
   final userIter = DeltaIterator(user);
   final actualIter = DeltaIterator(actual);
-  var diff = 0;
+  int diff = 0;
   while (userIter.hasNext || actualIter.hasNext) {
-    final length = math.min(userIter.peekLength(), actualIter.peekLength());
+    num length = math.min(userIter.peekLength(), actualIter.peekLength());
     final userOp = userIter.next(length);
     final actualOp = actualIter.next(length);
     assert(userOp.length == actualOp.length);

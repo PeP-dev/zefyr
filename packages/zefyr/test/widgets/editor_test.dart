@@ -25,8 +25,7 @@ void main() {
       await editor.pumpAndTap();
       // TODO: figure out why this extra pump is needed here
       await tester.pumpAndSettle();
-      final p =
-          tester.widget(find.byType(ZefyrRichText).first) as ZefyrRichText;
+      ZefyrRichText p = tester.widget(find.byType(ZefyrRichText).first);
       expect(p.text.children.first.style.color, Colors.red);
     });
 
@@ -45,7 +44,7 @@ void main() {
       await editor.pumpAndTap();
       await editor.updateSelection(base: 0, extent: 3);
       await editor.disable();
-      final widget = tester.widget(find.byType(ZefyrEditor)) as ZefyrEditor;
+      ZefyrEditor widget = tester.widget(find.byType(ZefyrEditor));
       expect(widget.mode, ZefyrMode.view);
     });
 
@@ -58,8 +57,8 @@ void main() {
       expect(find.byIcon(Icons.format_list_bulleted), findsOneWidget);
 
       await sandbox.tapButtonWithIcon(Icons.format_list_bulleted);
-      var widget = sandbox.findFirstEditor();
-      var line = widget.controller.document.root.children.first;
+      ZefyrEditor widget = sandbox.findFirstEditor();
+      Node line = widget.controller.document.root.children.first;
       expect(line, isInstanceOf<BlockNode>());
       BlockNode block = line;
       expect(block.style.contains(NotusAttribute.block.bulletList), isTrue);

@@ -27,10 +27,7 @@ class _FormEmbeddedScreenState extends State<FormEmbeddedScreen> {
       children: <Widget>[
         TextField(decoration: InputDecoration(labelText: 'Name')),
         buildEditor(),
-        TextField(
-          decoration: InputDecoration(labelText: 'Details'),
-          maxLines: 3,
-        ),
+        TextField(decoration: InputDecoration(labelText: 'Email')),
       ],
     );
 
@@ -84,7 +81,7 @@ class _FormEmbeddedScreenState extends State<FormEmbeddedScreen> {
     return [
       CheckedPopupMenuItem(
         value: _Options.darkTheme,
-        child: Text('Dark theme'),
+        child: Text("Dark theme"),
         checked: _darkTheme,
       ),
     ];

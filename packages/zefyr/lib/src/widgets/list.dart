@@ -17,8 +17,8 @@ class ZefyrList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = ZefyrTheme.of(context);
-    final items = <Widget>[];
-    var index = 1;
+    List<Widget> items = [];
+    int index = 1;
     for (var line in node.children) {
       items.add(_buildItem(line, index));
       index++;
@@ -26,7 +26,7 @@ class ZefyrList extends StatelessWidget {
 
     final isNumberList =
         node.style.get(NotusAttribute.block) == NotusAttribute.block.numberList;
-    var padding = isNumberList
+    EdgeInsets padding = isNumberList
         ? theme.attributeTheme.numberList.padding
         : theme.attributeTheme.bulletList.padding;
     padding = padding.copyWith(left: theme.indentWidth);

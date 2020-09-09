@@ -63,8 +63,7 @@ class EditorSandBox {
   }
 
   Future<void> disable() {
-    final state =
-        tester.state(find.byType(_ZefyrSandbox)) as _ZefyrSandboxState;
+    _ZefyrSandboxState state = tester.state(find.byType(_ZefyrSandbox));
     state.disable();
     return tester.pumpAndSettle();
   }
@@ -99,14 +98,14 @@ class EditorSandBox {
   }
 
   RawZefyrButton findButtonWithIcon(IconData icon) {
-    final button = tester.widget(find.widgetWithIcon(RawZefyrButton, icon))
-        as RawZefyrButton;
+    RawZefyrButton button =
+        tester.widget(find.widgetWithIcon(RawZefyrButton, icon));
     return button;
   }
 
   RawZefyrButton findButtonWithText(String text) {
-    final button = tester.widget(find.widgetWithText(RawZefyrButton, text))
-        as RawZefyrButton;
+    RawZefyrButton button =
+        tester.widget(find.widgetWithText(RawZefyrButton, text));
     return button;
   }
 
